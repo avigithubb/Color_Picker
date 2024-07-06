@@ -1,0 +1,99 @@
+{% include "header.html" %}
+    <main>
+        <div class="main-head">
+            <h1 style="font-size: 50px">...Generate Awesome colors</h1>
+        </div>
+        <div class="content">
+            <div class="card">
+                {% if img_path %}
+                    <img src="{{ url_for('static', filename='temp_img.png') }}" alt="Uploaded Image">
+                {% else %}
+                    <img src="{{ url_for('static', filename='images/one_piece.jpg') }}" alt="my-img">
+                {% endif %}
+                <div id="colors" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 py-5">
+                    <div class="col">
+                        <h3>Color</h3>
+                        {% if img_colors %}
+                            {% for color in img_colors %}
+                                <div id="color" style="background-color: #{{ color }}"></div>
+                            {% endfor %}
+                        {% else %}
+                            <div id="color" style="background-color: rgb(16, 216, 223)"></div>
+                            <div id="color" style="background-color: rgb(236, 222, 27)"></div>
+                            <div id="color" style="background-color: rgb(236, 20, 27)"></div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <h3>Hex Code</h3>
+                        {% if img_colors %}
+                            {% for color in img_colors %}
+                                <div class="same-content">
+                                    <p>#{{ color }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="same-content">
+                                <p>#c0c0c0</p>
+                            </div>
+                            <div class="same-content">
+                                <p>#c0c0c0</p>
+                            </div>
+                            <div class="same-content">
+                                <p>#c0c0c0</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <h3>RGB</h3>
+                        {% if rgb %}
+                            {% for color in rgb %}
+                            <div class="same-content">
+                                <p>rgb{{ color }}</p>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="same-content">
+                                <p>rgb(29, 125, 169)</p>
+                            </div>
+                            <div class="same-content">
+                                <p>rgb(29, 125, 169)</p>
+                            </div>
+                            <div class="same-content">
+                                <p>rgb(29, 125, 169)</p>
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+            <form action="/show_color" method="POST" enctype="multipart/form-data">
+                <div class="file-input-wrapper">
+                    <input type="file" id="file-input" class="file-input" name="img-file">
+                    <button id="custom-button" class="custom-button" type="button">Use Your Img</button>
+                    <label for="define" style="margin-top: 20px;"><span style="color: violet;">Click me!</span> to Upload your image</label>
+                </div>
+                <div class="file-input-wrapper">
+                    <label for="noc">No. of colors:</label>
+                    <input type="text" placeholder="ex. 10" name="ncolors">
+                    <label for="Delta">Delta:</label>
+                    <input type="text" placeholder="1-255" name="delta">
+                </div>
+                <div class="file-input-wrapper">
+                    <input type="submit" value="generate">
+                    <label for="define" style="margin-top: 20px;"><span style="color: violet;">Click me!</span> to generate color palette</label>
+
+                </div>
+
+            </form>
+        </div>
+        <div class="define">
+            <h2>Image Color Picker</h2><br>
+            <p>Upload an image to filter out the colors...</p><br>
+            <p>Get the HTML Color Code of this pixel. Also you get the HEX color code value and RGB value. Under 'Use Your Image' You can upload your own image (for example an screenshot of your desktop), put a picture url in the textbox below. Or use an website url, you will see a thumbnail on the left side.</p>
+        </div>
+
+    </main>
+
+{% include "footer.html" %}
