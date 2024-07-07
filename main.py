@@ -63,4 +63,4 @@ def show():
     return render_template("index.html", img_colors=hex_arr, rgb=rgb, img_path=temp_img_path, year=year)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")

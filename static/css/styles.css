@@ -225,3 +225,33 @@ footer ul li{
     padding: 10px;
     text-align: center;
 }
+
+
+@media only screen and (max-width: 768px) {
+    main .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 80%;
+        margin-top: 0px;
+    }
+
+    form{
+        width: 80%;
+        margin: auto;
+    }
+
+    .card{
+        width: 100%;
+    }
+
+    .main-head{
+        height: 50vh;
+        text-align: center;
+    }
+
+    #colors{
+        width: 100%;
+    }
+
+}
